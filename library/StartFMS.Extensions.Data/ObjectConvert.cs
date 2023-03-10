@@ -13,6 +13,12 @@ namespace StartFMS.Extensions.Data {
             return DateTime.TryParse(str, out DateTime result) ? result : new DateTime();
         }
 
+        /// <summary>
+        /// 字串轉換日期格式
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="format">預設 yyyy-MM-dd HH:mm:ss</param>
+        /// <returns></returns>
         public static string ToDateTimeFormat(this String str, string format = "yyyy-MM-dd HH:mm:ss") {
             return DateTime.TryParse(str, out DateTime result) ? result.ToString(format) : "";
         }
@@ -38,6 +44,13 @@ namespace StartFMS.Extensions.Data {
         public static Double ToDouble(this Object str) {
             return Double.TryParse(str.ToString(), out Double result) ? result : 0;
         }
+
+        /// <summary>
+        /// 轉換小數點
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="digits">預設小數點4位</param>
+        /// <returns></returns>
         public static string ToDecimalPlaces(this string str, int digits = 4) {
             if (!str.Contains('.')) { str += ".0000"; }
             if (!decimal.TryParse(str, out decimal oDecimal)) { return str; }
@@ -45,14 +58,25 @@ namespace StartFMS.Extensions.Data {
             return decimal.Round(before, digits).ToString();
         }
 
+        /// <summary>
+        /// 千分位
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static string ToThousandths(this string str) {
             if (!decimal.TryParse(str, out decimal oDecimal)) { return str; }
             decimal before = decimal.Parse(str);
             return String.Format("{0:N}", before);
         }
 
-        public static string ToStringNumber(this int number, int digits = 4) {
-            string nowNumber = (number).ToString();
+        /// <summary>
+        /// 轉換數字 (Ex : 0001)
+        /// </summary>
+        /// <param name="number"></param>
+        /// <param name="digits">預設4位數</param>
+        /// <returns></returns>
+        public static string ToNumber(this string str, int digits = 4) {
+            string nowNumber = str;
             string template = "";
             int len = nowNumber.Length;
             if (len >= digits) { return nowNumber; }
@@ -61,8 +85,15 @@ namespace StartFMS.Extensions.Data {
             }
             return template + nowNumber;
         }
-        public static string ToStringAutoNumber(this int number, int digits = 4) {
-            string nowNumber = (number + 1).ToString();
+
+        /// <summary>
+        /// 自動累加數值
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="digits">預設4位數</param>
+        /// <returns></returns>
+        public static string ToAutoNumber(this string str, int digits = 4) {
+            string nowNumber = (str.ToInt() + 1).ToString();
             string template = "";
             int len = nowNumber.Length;
             if (len >= digits) { return nowNumber; }
