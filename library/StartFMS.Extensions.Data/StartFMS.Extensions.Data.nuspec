@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>StartFMS.Extensions.Data</id>
+    <version>1.0.0</version>
+    <title>StartFMS</title>
+    <authors>JohnConte</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/JontCont</projectUrl>
+    <description>提供字串型別轉換、Models 傳值</description>
+    <releaseNotes>Version 1.0</releaseNotes>
+    <!-- <copyright>$copyright$</copyright> -->
+    <tags>StartFMS Extensions Data</tags>
+  </metadata>
+</package>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33417.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StartFMS.Extensions.Data", "StartFMS.Extensions.Data.csproj", "{1365195D-307B-4034-A35C-323FFDB05AED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1365195D-307B-4034-A35C-323FFDB05AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1365195D-307B-4034-A35C-323FFDB05AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1365195D-307B-4034-A35C-323FFDB05AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1365195D-307B-4034-A35C-323FFDB05AED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {342000A4-E282-450B-B546-D06F8C6064A6}
+	EndGlobalSection
+EndGlobal
