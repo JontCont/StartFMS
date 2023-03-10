@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>StartFMS.Extensions.Data</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>StartFMS</title>
     <authors>JohnConte</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
