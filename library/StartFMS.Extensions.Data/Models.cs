@@ -1,6 +1,6 @@
 ﻿namespace StartFMS.Extensions.Data;
 public static class Models {
-    public static T ToDefaultValue<T>(this T obj) {
+    public static T InitValue<T>(this T obj) {
         foreach (var property in obj.GetType().GetProperties()) {
             if (obj.GetType().GetProperty(property.Name).GetValue(obj) != null) continue;
             switch (property.PropertyType.Name.ToLower()) {
@@ -32,7 +32,7 @@ public static class Models {
         return obj;
     }//ToDefaultValue
 
-    public static T ToValue<T>(this T obj, object req) {
+    public static T SetValue<T>(this T obj, object req) {
         foreach (var propertyReq in req.GetType().GetProperties()) {
             if (req.GetType().GetProperty(propertyReq.Name).GetValue(req) == null) continue;
             var pName = propertyReq.Name;
