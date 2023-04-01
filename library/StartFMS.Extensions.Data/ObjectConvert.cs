@@ -102,5 +102,20 @@ namespace StartFMS.Extensions.Data {
             }
             return template + nowNumber;
         }
+
+        /// <summary>
+        /// 第一個英文字首大寫
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string ToCapitalizeFirstLetter(this string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            return input.Substring(0, 1).ToUpper() + input.Substring(1);
+        }
     }
 }
