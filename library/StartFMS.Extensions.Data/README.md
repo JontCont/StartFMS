@@ -1,5 +1,6 @@
 # StartFMS.Extensions.Data
-StartFMS.Extensions.Data 目的字串轉換資料型態、Model 預設值以及傳值所用，支持 .NET 系列。
+目的透過字串轉換資料型態、Model 預設值以及傳值等所用，支持 .NET 系列。
+
 
 ## 字串轉換
 提供 int 、Double、float、datetime等轉換資料型態，範例如下
@@ -27,8 +28,14 @@ string num1 = "0001".ToNumber(5); //output : 00001
 ## Model 預設值
 ```cs
 //預設 class 內屬性預設值
-var mods = new Class1(){}.ToDefaultValue();
+var mods = new Class1(){}.InitValue();
 
 //傳入 mods 值
-var mods2 = new Class1(){}.ToValue(mods);
+var mods2 = new Class1(){}.SetValue(mods);
 ```
+
+## 更新紀錄
+1.0.4  
+- 加入 ToCapitalizeFirstLetter() ->字首大寫
+- 變更 ToDefaultValue -> InitValue、ToValue -> SetValue 名稱
+
