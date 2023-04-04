@@ -1,10 +1,6 @@
 # StartFMS.Extensions.Line
 這是由LineBotSDK擴充出來的工具，減少開發困難度。
 
-## 所需套件
-- [StartFMS.Extensions.Line](https://www.nuget.org/packages/LineBotSDK#usedby-body-tab)
-- [LineBotSDK](https://www.nuget.org/packages/LineBotSDK)
-
 ## 前置作業
 第一步、新創一個類別
 ```cs
@@ -105,3 +101,8 @@ public override void MessageSticker() { }
 //地圖
 public override void MessageLocation() { }
 ```
+
+
+## 更新內容
+1.0.1 
+- 修正 依賴 LineBotSDK問題
