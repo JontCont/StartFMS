@@ -58,7 +58,7 @@ public class LineBots :IDisposable
         }
         var LineEvent = LineReceived.events.FirstOrDefault();
         LineType value;
-        if (LineEvent == null || !Enum.TryParse(LineEvent.type.ToCapitalizeFirstLetter(), out value))
+        if (LineEvent == null || !Enum.TryParse(LineEvent.type.ToLower().ToCapitalizeFirstLetter(), out value))
         {
             throw new ArgumentNullException("Error : Null value or incorrectly passed value.");
         }
@@ -79,7 +79,7 @@ public class LineBots :IDisposable
     public virtual void Message(string messageType)
     {
         LineMessageType value;
-        if (string.IsNullOrEmpty(messageType) || !Enum.TryParse(messageType.ToCapitalizeFirstLetter(), out value))
+        if (string.IsNullOrEmpty(messageType) || !Enum.TryParse(messageType.ToLower().ToCapitalizeFirstLetter(), out value))
         {
             throw new ArgumentNullException("Error : Null value or incorrectly passed value.");
         }
