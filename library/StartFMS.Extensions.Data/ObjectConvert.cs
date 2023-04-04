@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace StartFMS.Extensions.Data {
-    internal static class ObjectConvert {
+    public static class ObjectConvert {
         public static Decimal ToDecimal(this String str) {
             return decimal.TryParse(str, out decimal result) ? result : 0;
         }
