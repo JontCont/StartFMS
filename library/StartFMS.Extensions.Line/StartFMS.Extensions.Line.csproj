@@ -8,11 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="LineBotSDK" Version="2.10.37" />
-    <PackageReference Include="StartFMS.Extensions.Data" Version="1.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\StartFMS.Extensions.Data\StartFMS.Extensions.Data.csproj" />
+    <PackageReference Include="StartFMS.Extensions.Data" Version="1.0.5" />
   </ItemGroup>
 
 </Project>
