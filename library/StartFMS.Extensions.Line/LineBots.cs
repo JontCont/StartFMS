@@ -1,5 +1,6 @@
 ﻿using isRock.LineBot;
-using Newtonsoft.Json.Linq;
+using StartFMS.Extensions.Data;
+using System.Linq;
 
 namespace StartFMS.Extensions.Line;
 public class LineBots :IDisposable
@@ -9,7 +10,7 @@ public class LineBots :IDisposable
     public string AdminUserID { get; set; }
     public string ReplyUserID { get;set; }
     public Stream STREAM { get; private set; }
-    public ReceivedMessage ReceivedMessage { get; set; }
+    public LineReceived LineReceived { get; set; }
 
     // Private 設定檔
     private Bot LINE_BOT { get; set; }
@@ -37,9 +38,9 @@ public class LineBots :IDisposable
                 string strBody = await reader.ReadToEndAsync();
                 if (reader == null || string.IsNullOrEmpty(strBody))
                     throw new ArgumentNullException("Mandatory parameter", nameof(strBody)); ;
-                ReceivedMessage = Utility.Parsing(strBody);
-                ReplyUserID = ReceivedMessage.events.FirstOrDefault()!=null?
-                    ReceivedMessage.events.FirstOrDefault().replyToken : "";
+                LineReceived = (LineReceived)Utility.Parsing(strBody);
+                ReplyUserID = LineReceived.events.FirstOrDefault()!=null?
+                    LineReceived.events.FirstOrDefault().replyToken : "";
             }
         }
         catch (Exception ex)
@@ -51,14 +52,13 @@ public class LineBots :IDisposable
 
     public virtual void ExecuteReader()
     {
-        var receivedMessage = ReceivedMessage;
-        if (receivedMessage == null)
+        if (LineReceived == null)
         {
-            throw new ArgumentNullException("Error : No correct response yet. (ReceivedMessage is undefined)");
+            throw new ArgumentNullException("Error : No correct response yet. (LineReceived is undefined)");
         }
-        var LineEvent = receivedMessage.events.FirstOrDefault();
+        var LineEvent = LineReceived.events.FirstOrDefault();
         LineType value;
-        if (LineEvent == null || !Enum.TryParse(CapitalizeFirstLetter(LineEvent.type), out value))
+        if (LineEvent == null || !Enum.TryParse(LineEvent.type.ToCapitalizeFirstLetter(), out value))
         {
             throw new ArgumentNullException("Error : Null value or incorrectly passed value.");
         }
@@ -79,7 +79,7 @@ public class LineBots :IDisposable
     public virtual void Message(string messageType)
     {
         LineMessageType value;
-        if (string.IsNullOrEmpty(messageType) || !Enum.TryParse(CapitalizeFirstLetter(messageType), out value))
+        if (string.IsNullOrEmpty(messageType) || !Enum.TryParse(messageType.ToCapitalizeFirstLetter(), out value))
         {
             throw new ArgumentNullException("Error : Null value or incorrectly passed value.");
         }
@@ -171,16 +171,6 @@ public class LineBots :IDisposable
     public void ReplyMessage(string message, string tokenId)
     {
         var result = LINE_BOT.ReplyMessage(tokenId, message);
-    }
-
-    private string CapitalizeFirstLetter(string input)
-    {
-        if (string.IsNullOrEmpty(input))
-        {
-            return input;
-        }
-
-        return input.Substring(0, 1).ToUpper() + input.Substring(1);
     }
 
     public void Dispose()
