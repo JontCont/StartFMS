@@ -10,7 +10,7 @@ public class LineBots :IDisposable
     public string AdminUserID { get; set; }
     public string ReplyUserID { get;set; }
     public Stream STREAM { get; private set; }
-    public LineReceived LineReceived { get; set; }
+    public ReceivedMessage? LineReceived { get; set; }
 
     // Private 設定檔
     private Bot LINE_BOT { get; set; }
@@ -38,7 +38,7 @@ public class LineBots :IDisposable
                 string strBody = await reader.ReadToEndAsync();
                 if (reader == null || string.IsNullOrEmpty(strBody))
                     throw new ArgumentNullException("Mandatory parameter", nameof(strBody)); ;
-                LineReceived = (LineReceived)Utility.Parsing(strBody);
+                LineReceived = Utility.Parsing(strBody);
                 ReplyUserID = LineReceived.events.FirstOrDefault()!=null?
                     LineReceived.events.FirstOrDefault().replyToken : "";
             }
