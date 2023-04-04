@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using isRock.LineBot;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StartFMS.Extensions.Line;
 using System;
 using System.Collections.Generic;
@@ -11,16 +13,12 @@ namespace StartFMS.UnitTest.Line
     [TestClass()]
     public class LineBotsTests
     {
-        [TestMethod()]
-        public void ExecuteReaderTest()
-        {
-            throw new NotImplementedException();
-        }
 
         [TestMethod()]
         public void MessageTest()
         {
-            throw new NotImplementedException();
+            new LineBots().Message("image");
         }
+
     }
 }
