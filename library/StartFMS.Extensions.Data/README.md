@@ -35,6 +35,9 @@ var mods2 = new Class1(){}.SetValue(mods);
 ```
 
 ## 更新紀錄
+1.0.5  
+- 修繕型態無法轉換問題
+
 1.0.4  
 - 加入 ToCapitalizeFirstLetter() ->字首大寫
 - 變更 ToDefaultValue -> InitValue、ToValue -> SetValue 名稱
