@@ -33,7 +33,7 @@ namespace StartFMS.Extensions.Line
             {
                 string paramName = prop.Name;
                 var paramValue = prop.GetValue(urlRequest);
-                if (paramValue == null && paramName == "url") { continue; }
+                if (paramValue == null || paramName == "url") { continue; }
                 resultData.Add(paramName + "=" + paramValue.ToString());
             }
             return resultUrl + "?" + string.Join("&", resultData);
