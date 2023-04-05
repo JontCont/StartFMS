@@ -69,6 +69,35 @@ public static class Config
     }
 
     /// <summary>
+    /// Get Local Environment / appsetting.json 
+    /// </summary>
+    /// <returns></returns>
+    public static IConfiguration GetConfiguration<T>()
+    {
+        var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddUserSecrets(typeof(T).Assembly, optional: true, reloadOnChange: false)
+            .AddEnvironmentVariables();
+        return builder.Build();
+    }
+
+    /// <summary>
+    /// Get Local Environment / appsetting.json 
+    /// </summary>
+    /// <param name="path">appsetting path</param>
+    /// <returns></returns>
+    public static IConfiguration GetConfiguration<T>(string path)
+    {
+        var builder = new ConfigurationBuilder()
+            .SetBasePath(path)
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddUserSecrets(typeof(T).Assembly, optional: true, reloadOnChange: false)
+            .AddEnvironmentVariables();
+        return builder.Build();
+    }
+
+    /// <summary>
     /// Get Local Environment / appsetting.json / UserSecrets
     /// </summary>
     /// <returns></returns>
