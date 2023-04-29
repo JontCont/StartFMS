@@ -3,12 +3,12 @@ using StartFMS.Extensions.Data;
 using System.Linq;
 
 namespace StartFMS.Extensions.Line;
-public class LineBots :IDisposable
+public class LineBots : IDisposable
 {
     // Public 設定檔
-    public string ChannelToken { get;set; }
+    public string ChannelToken { get; set; }
     public string AdminUserID { get; set; }
-    public string ReplyUserID { get;set; }
+    public string ReplyUserID { get; set; }
     public Stream STREAM { get; private set; }
     public ReceivedMessage? LineReceived { get; set; }
 
@@ -39,7 +39,7 @@ public class LineBots :IDisposable
                 if (reader == null || string.IsNullOrEmpty(strBody))
                     throw new ArgumentNullException("Mandatory parameter", nameof(strBody)); ;
                 LineReceived = Utility.Parsing(strBody);
-                ReplyUserID = LineReceived.events.FirstOrDefault()!=null?
+                ReplyUserID = LineReceived.events.FirstOrDefault() != null ?
                     LineReceived.events.FirstOrDefault().replyToken : "";
             }
         }
@@ -153,6 +153,27 @@ public class LineBots :IDisposable
         var result = LINE_BOT.PushMessage(tokenId, message);
     }
 
+
+    /// 推送訊息 (請參閱 LineAPI 規則)
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="tokenId"></param>
+    public void PushImage(Uri message)
+    {
+        var result = LINE_BOT.PushMessage(ADMIN_TOKEN_ID, message);
+    }
+
+
+    /// 推送訊息 (請參閱 LineAPI 規則)
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="tokenId"></param>
+    public void PushImage(Uri message, string tokenId)
+    {
+        var result = LINE_BOT.PushMessage(tokenId, message);
+    }
+
+
     // --------------- Reply Message  ------------------//
     /// <summary>
     /// 回覆訊息 (請參閱 LineAPI 規則)
@@ -171,6 +192,17 @@ public class LineBots :IDisposable
     public void ReplyMessage(string message, string tokenId)
     {
         var result = LINE_BOT.ReplyMessage(tokenId, message);
+    }
+
+
+    public void ReplyImage(string url)
+    {
+        var result = LINE_BOT.ReplyMessage(ReplyUserID, new Uri(url));
+    }
+
+    public void ReplyImage(string url, string tokenId)
+    {
+        var result = LINE_BOT.ReplyMessage(tokenId, new Uri(url));
     }
 
     public void Dispose()
