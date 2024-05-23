@@ -10,7 +10,7 @@ namespace StartFMS.Extensions.Data.Tests;
 
 public class TestClass
 {
-    public int number { get; set; }
+    public int? number { get; set; }
     public string name { get; set; }
     public string description { get; set; }
     public byte[] data { get; set; }
