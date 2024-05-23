@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.8.2" />
+    <PackageReference Include="Microsoft.Azure.AppConfiguration.AspNetCore" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+      <PackageId>StartFMS.Extensions.NewConfiguration</PackageId>
+      <Title>StartFMS.Extensions.NewConfiguration</Title>
+      <Version>1.0.0</Version>
+      <Authors>John Conte</Authors>
+      <Company></Company>
+      <Product>Start</Product>
+      <Description></Description>
+      <Copyright>© StartFMS Corporation.  All rights reserved.</Copyright>
+      <PackageLicenseUrl>https://github.com/JontCont/StartFMS/blob/master/LICENSE</PackageLicenseUrl>
+      <PackageProjectUrl>https://github.com/JontCont/StartFMS/tree/master/library/StartFMS.Extensions.Configuration</PackageProjectUrl>
+      <PackageIconUrl></PackageIconUrl>
+      <PackageTags></PackageTags>
+      <PackageReleaseNotes></PackageReleaseNotes>
+      <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+      <RepositoryUrl>https://github.com/JontCont/StartFMS/tree/master/library/StartFMS.Extensions.Configuration</RepositoryUrl>
+      <RepositoryType>git</RepositoryType>
+      <IncludeSymbols>true</IncludeSymbols>
+      <IncludeSource>true</IncludeSource>
+      <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+</Project>
